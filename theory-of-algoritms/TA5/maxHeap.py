@@ -42,7 +42,7 @@ class maxHeap:
   storage = []
   countNodes = 0
   def __init__(this, *keys):
-    if keys:
+    if keys: 
       for key in keys:
         this.insert(key)
   extractMax = extractMax
