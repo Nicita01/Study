@@ -1,5 +1,7 @@
 #include <iostream>
 #include <algorithm>
+#include <stdio.h>
+#include <cstring>
 
 using namespace std;
 
@@ -85,9 +87,32 @@ class BinaryTree {
 
 
 int main() {
-  BinaryTree<int> s(34);
-  s.add(25).add(45).add(32).add(33);
-  (s.inOrderTravers(32));
-  
+  BinaryTree<int> s(32);
+  // s.add(25).add(45).add(32).add(33);
+  // s.inOrderTravers(32);
+  // string str = "0";
+  // while (true){
+  //   getline(cin, str);
+  //   // cin >> str;
+  //   cout << "S:" << str << ":F" << "\n";
+  //   if (str == "end") {
+  //     cout << "максимальная глубина для ";
+  //     int vertex;
+  //     cin >> vertex;
+  //     s.inOrderTravers(vertex);
+  //     break;
+  //   }    
+  // }
+  string str = "0";
+  while (getline(cin, str)){
+    if ((str == "end")) {
+      cout << "максимальная глубина для ";
+      int vertex;
+      cin >> vertex;
+      s.inOrderTravers(vertex);
+      break;
+    }   
+    s.add(atoi(str.c_str())); 
+  }
   return 0;
 }
