@@ -75,18 +75,8 @@ print(root.right.right.triangle)
 
 ############################
 
-camera = [-2, 0, 0]
-pictureCenter = [-1, 0, 0]
-picture = []
-for i in range(-100, 100):
-  picture.append([])
-  for j in range(-100, 100):
-    if ()
-
-
 
 # Coor = namedtuple('Coor', [0][1][2])
-
 
 # print area(Coor(0, 0, 0), Coor(0, 0, 3), Coor(0, 4, 0))
 
@@ -105,6 +95,7 @@ def dot_product(a, b):
 
 def normalize(a):
   ln = math.sqrt(a[0]*a[0] + a[1]*a[1] + a[2]*a[2])
+  print(ln)
   n = a[0] / ln
   m = a[1] / ln
   k = a[2] / ln
@@ -113,6 +104,7 @@ def normalize(a):
 
 def intersection(A, B, C, M, N):
   V1 =  vector_product(create_vector(A, B), create_vector(A, C))
+  print(create_vector(A, B), create_vector(A, C))
   normV1 = normalize(V1)
   V2 = create_vector(M, A)
   d =  dot_product(normV1, V2)
@@ -124,7 +116,11 @@ def intersection(A, B, C, M, N):
   inter_y = M[1]  +  V3[1]*d/e
   inter_z = M[2]  +  V3[2]*d/e
   inter = [inter_x, inter_y, inter_z]
-  return abs(area(A, B, inter) + area(A, C, inter) + area(B, C, inter) - area(A, B, C)) < 1e-8
+  if abs(area(A, B, inter) + area(A, C, inter) + area(B, C, inter) - area(A, B, C)) < 1e-8:
+      return 255
+  else:
+      return 0
+
 
 def convertToArray(pixels):
   return np.array(pixels, dtype = np.dtype('uint8'))
@@ -135,3 +131,15 @@ def writeToBMP(pixels, size, filename):
   image = Image.fromarray(array, 'L')
   image.save(filename, 'BMP')
   return None
+writeToBMP(convertToArray([[0, 255, 0], [0, 255, 0], [0, 255, 0]]), 100, 'terenem.bmp')
+
+camera = [0, 0, 2]
+picture = [[0] * 10] * 10
+for i in range(10):
+    for j in range(10):
+        k = 0
+        while(k < len(triangles)):
+            if (intersection(triangles[k][0], triangles[k][1], triangles[k][2], [(i)/10, (j)/10, 1], camera)):
+                picture[i][j] = 255
+            k += 1
+print (picture)
