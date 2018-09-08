@@ -19,7 +19,7 @@ rl.question("Введите ключевое слово:\n", (salt) => {
 
 function chipher(salt) {
   return goodText.map((cur, index) => {
-    let chipN = cur.charCodeAt() + salt[index % salt.length].charCodeAt() - 'a'.charCodeAt();
+    const chipN = cur.charCodeAt() + salt[index % salt.length].charCodeAt() - 'a'.charCodeAt();
     return String.fromCharCode(chipN > 'z'.charCodeAt() ? chipN - 26 : chipN);
   });
 }

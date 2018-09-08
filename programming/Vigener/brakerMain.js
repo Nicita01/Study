@@ -61,7 +61,6 @@ for (const curKeyLengthTest of samplesObject) {
   }
 }
 
-
 function sameIndexOverlap(keyLength) {
   for (let shift = 0; shift < keyLength; shift++) {
     sameIndexOverlapArrays.push([]);
