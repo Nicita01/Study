@@ -1,1 +1,0 @@
-SELECT 'Machekhin Mykyta Andriyovych' AS "Full name"
